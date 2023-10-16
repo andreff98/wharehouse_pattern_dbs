@@ -8,8 +8,6 @@ namespace wharehouse_pattern_dbs.Repositories.SQLServer
     {
         private readonly SqlContextDb _sqlContextDb;
 
-        public SqlServerRepository() { }
-
         public SqlServerRepository(SqlContextDb sqlContextDb) => _sqlContextDb = sqlContextDb;
 
         public async Task<Employee> GetEmployee(int? id) => await _sqlContextDb.Employee.FindAsync(id);

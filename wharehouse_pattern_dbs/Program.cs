@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 using System.Drawing.Text;
 using wharehouse_pattern_dbs.Data.PostgreSQL;
 using wharehouse_pattern_dbs.Data.SQLServer;
@@ -21,9 +22,11 @@ builder.Services.AddDbContext<PostgreSqlContextDb>(options =>
     options.UseNpgsql("PostgreSQL"));
 
 // Registar repositorios
-builder.Services.AddTransient<IEmployeeRepository, EmployeeRepository>();
-builder.Services.AddTransient<IPostgreSqlRepository, PostgreSqlRepository>();
-builder.Services.AddTransient<ISqlServerRepository, SqlServerRepository>();
+//builder.Services.AddTransient<IEmployeeRepository>();
+//builder.Services.AddTransient<IPostgreSqlRepository, PostgreSqlRepository>();
+//builder.Services.AddTransient<IEmployeeRepository, SqlServerRepository>();
+//builder.Services.AddTransient<IEmployeeRepository, SqlServerRepository>();
+builder.Services.AddTransient<IEmployeeRepository, PostgreSqlRepository>();
 // builder.Services.AddScoped<IWarehouseFactory>();
 
 // Registar serviços
