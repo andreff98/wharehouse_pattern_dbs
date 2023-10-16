@@ -14,20 +14,17 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 
 // Ligação base de dadis
-var connectionString = builder.Configuration.GetConnectionString("SQLServer");
+var connectionStringSQL = builder.Configuration.GetConnectionString("SQLServer");
 builder.Services.AddDbContext<SqlContextDb>(options =>
-    options.UseSqlServer(connectionString));
+    options.UseSqlServer(connectionStringSQL));
 
+var connectionStringPostgre = builder.Configuration.GetConnectionString("PostgreSQL");
 builder.Services.AddDbContext<PostgreSqlContextDb>(options =>
-    options.UseNpgsql("PostgreSQL"));
+    options.UseNpgsql(connectionStringPostgre));
 
 // Registar repositorios
-//builder.Services.AddTransient<IEmployeeRepository>();
-//builder.Services.AddTransient<IPostgreSqlRepository, PostgreSqlRepository>();
-//builder.Services.AddTransient<IEmployeeRepository, SqlServerRepository>();
-//builder.Services.AddTransient<IEmployeeRepository, SqlServerRepository>();
-builder.Services.AddTransient<IEmployeeRepository, PostgreSqlRepository>();
-// builder.Services.AddScoped<IWarehouseFactory>();
+//builder.Services.AddTransient<IEmployeeRepository, PostgreSqlRepository>();
+builder.Services.AddTransient<IEmployeeRepository, SqlServerRepository>();
 
 // Registar serviços
 builder.Services.AddTransient<IEmployeeService, EmployeeService>();
