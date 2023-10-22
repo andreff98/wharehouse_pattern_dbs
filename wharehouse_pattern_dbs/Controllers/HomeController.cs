@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using wharehouse_pattern_dbs.Models;
+using wharehouse_pattern_dbs.Roles;
 
 namespace wharehouse_pattern_dbs.Controllers
 {
@@ -15,7 +16,87 @@ namespace wharehouse_pattern_dbs.Controllers
 
         public IActionResult Index()
         {
+            //Testes
+            string factoryName = "ConcellorFactory"; // Replace with the desired factory name
+
+            Type factoryType = Type.GetType("wharehouse_pattern_dbs.Roles." + factoryName); // Adjust the namespace
+            if (factoryType != null)
+            {
+                RolesFactory rolesFactory = (RolesFactory)Activator.CreateInstance(factoryType);
+
+                if (rolesFactory == null) return View();
+                
+                IRoles role = rolesFactory.CreateRole();
+                ViewBag.Message = role.CreateRole();
+            }
+            else
+            {
+                // Handle the case where the factory type is not found
+            }
+
+            
+            //RolesFactory rolesFactory = new AdminFactory();
+            //IRoles role = rolesFactory.CreateRole();
+            
+            
             return View();
+        }
+
+        public async Task<IActionResult> SetExernal()
+        {
+            //Testes
+            string factoryName = "ExternalFactory"; // Replace with the desired factory name
+
+            Type factoryType = Type.GetType("wharehouse_pattern_dbs.Roles." + factoryName); // Adjust the namespace
+            if (factoryType != null)
+            {
+                RolesFactory rolesFactory = (RolesFactory)Activator.CreateInstance(factoryType);
+
+                if (rolesFactory == null) return View("Index");
+                
+                IRoles role = rolesFactory.CreateRole();
+                ViewBag.Message = role.CreateRole();
+            }
+
+            return View("Index");
+        }
+        
+        public async Task<IActionResult> SetConcellor()
+        {
+            //Testes
+            string factoryName = "ConcellorFactory"; // Replace with the desired factory name
+
+            Type factoryType = Type.GetType("wharehouse_pattern_dbs.Roles." + factoryName); // Adjust the namespace
+            if (factoryType != null)
+            {
+                RolesFactory rolesFactory = (RolesFactory)Activator.CreateInstance(factoryType);
+
+                if (rolesFactory == null) return View("Index");
+                
+                IRoles role = rolesFactory.CreateRole();
+                ViewBag.Message = role.CreateRole();
+            }
+
+            return View("Index");
+        }
+        
+        public async Task<IActionResult> SetAdmin()
+        {
+            //Testes
+            string factoryName = "AdminFactory"; // Replace with the desired factory name
+
+            Type factoryType = Type.GetType("wharehouse_pattern_dbs.Roles." + factoryName); // Adjust the namespace
+            if (factoryType != null)
+            {
+                RolesFactory rolesFactory = (RolesFactory)Activator.CreateInstance(factoryType);
+
+                if (rolesFactory == null) return View("Index");
+                
+                IRoles role = rolesFactory.CreateRole();
+                ViewBag.Message = role.CreateRole();
+            }
+
+            return View("Index");
         }
 
         public IActionResult Privacy()

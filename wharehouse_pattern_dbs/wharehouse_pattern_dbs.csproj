@@ -18,4 +18,20 @@
     <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="7.0.11" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Remove="Services\SKUGenerator\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Remove="Services\SKUGenerator\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="Services\SKUGenerator\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Services\SKUGenerator\**" />
+  </ItemGroup>
+
 </Project>
