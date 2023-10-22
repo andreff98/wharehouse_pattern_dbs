@@ -5,7 +5,7 @@ using wharehouse_pattern_dbs.Models;
 
 namespace wharehouse_pattern_dbs.Repositories.PostgreSQL
 {
-    public class PostgreSqlRepository : IPostgreSqlRepository
+    public class PostgreSqlRepository : IEmployeeRepository
     {
         private readonly PostgreSqlContextDb _postgreSqlContextDb;
 

@@ -5,7 +5,7 @@ using wharehouse_pattern_dbs.Models;
 
 namespace wharehouse_pattern_dbs.Repositories.SQLServer
 {
-    public class SqlServerRepository : ISqlServerRepository
+    public class SqlServerRepository : IEmployeeRepository
     {
         private readonly SqlContextDb _sqlContextDb;
 

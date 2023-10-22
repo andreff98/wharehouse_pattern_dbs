@@ -23,8 +23,8 @@ builder.Services.AddDbContext<PostgreSqlContextDb>(options =>
     options.UseNpgsql(connectionStringPostgre));
 
 // Registar repositorios
-//builder.Services.AddTransient<IEmployeeRepository, PostgreSqlRepository>();
-builder.Services.AddTransient<IEmployeeRepository, SqlServerRepository>();
+builder.Services.AddTransient<IEmployeeRepository, PostgreSqlRepository>();
+//builder.Services.AddTransient<IEmployeeRepository, SqlServerRepository>();
 
 // Registar serviços
 builder.Services.AddTransient<IEmployeeService, EmployeeService>();
