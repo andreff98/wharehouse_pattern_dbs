@@ -27,7 +27,7 @@ namespace wharehouse_pattern_dbs.Controllers
                 if (rolesFactory == null) return View();
                 
                 IRoles role = rolesFactory.CreateRole();
-                ViewBag.Message = role.CreateRole();
+                ViewBag.Message = role.GetRoleName();
             }
             else
             {
@@ -55,7 +55,7 @@ namespace wharehouse_pattern_dbs.Controllers
                 if (rolesFactory == null) return View("Index");
                 
                 IRoles role = rolesFactory.CreateRole();
-                ViewBag.Message = role.CreateRole();
+                ViewBag.Message = role.GetRoleName();
             }
 
             return View("Index");
@@ -74,7 +74,7 @@ namespace wharehouse_pattern_dbs.Controllers
                 if (rolesFactory == null) return View("Index");
                 
                 IRoles role = rolesFactory.CreateRole();
-                ViewBag.Message = role.CreateRole();
+                ViewBag.Message = role.GetRoleName();
             }
 
             return View("Index");
@@ -93,7 +93,7 @@ namespace wharehouse_pattern_dbs.Controllers
                 if (rolesFactory == null) return View("Index");
                 
                 IRoles role = rolesFactory.CreateRole();
-                ViewBag.Message = role.CreateRole();
+                ViewBag.Message = role.GetRoleName();
             }
 
             return View("Index");

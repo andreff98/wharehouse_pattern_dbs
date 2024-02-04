@@ -4,7 +4,7 @@ namespace wharehouse_pattern_dbs.Roles;
 
 public class Admin : IRoles
 {
-    public string CreateRole()
+    public string GetRoleName()
     {
         return "admin";
     }

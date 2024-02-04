@@ -4,5 +4,6 @@ namespace wharehouse_pattern_dbs.Roles;
 
 public interface IRoles
 {
-    string CreateRole();
+    // string CreateRole();
+    string GetRoleName();
 }

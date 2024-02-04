@@ -4,7 +4,7 @@ namespace wharehouse_pattern_dbs.Roles;
 
 public class Concellor : IRoles
 {
-    public string CreateRole()
+    public string GetRoleName()
     {
         return "Concellor"; 
     }

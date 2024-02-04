@@ -13,7 +13,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
-// Ligação base de dadis
+// Ligaï¿½ï¿½o base de dadis
 var connectionStringSQL = builder.Configuration.GetConnectionString("SQLServer");
 builder.Services.AddDbContext<SqlContextDb>(options =>
     options.UseSqlServer(connectionStringSQL));
@@ -26,10 +26,26 @@ builder.Services.AddDbContext<PostgreSqlContextDb>(options =>
 //builder.Services.AddTransient<IEmployeeRepository, PostgreSqlRepository>();
 builder.Services.AddTransient<IEmployeeRepository, SqlServerRepository>();
 
-// Registar serviços
+builder.Services.AddSwaggerGen(c =>
+{
+    c.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo { Title = "Your API Name", Version = "v1" });
+});
+
+
+// Registar serviï¿½os
 builder.Services.AddTransient<IEmployeeService, EmployeeService>();
 
 var app = builder.Build();
+
+if (app.Environment.IsDevelopment())
+{
+    app.UseSwagger();
+    app.UseSwaggerUI(c =>
+    {
+        c.SwaggerEndpoint("/swagger/v1/swagger.json", "Your API Name v1");
+        c.RoutePrefix = "swagger";
+    });
+}
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
